@@ -1,6 +1,6 @@
 {
   "name": "opencode-copilot-multi",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "OpenCode plugin for using multiple GitHub Copilot accounts simultaneously",
   "keywords": [
     "opencode",
