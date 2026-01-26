@@ -1,6 +1,6 @@
 {
   "name": "opencode-copilot-multi",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "OpenCode plugin for using multiple GitHub Copilot accounts simultaneously",
   "keywords": [
     "opencode",
@@ -9,13 +9,13 @@
     "copilot",
     "multi-account"
   ],
-  "homepage": "https://github.com/valeriofantozzi/opencode-copilot-multi#readme",
+  "homepage": "https://github.com/iamvaleriofantozzi/opencode-copilot-multi#readme",
   "bugs": {
-    "url": "https://github.com/valeriofantozzi/opencode-copilot-multi/issues"
+    "url": "https://github.com/iamvaleriofantozzi/opencode-copilot-multi/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valeriofantozzi/opencode-copilot-multi.git"
+    "url": "git+https://github.com/iamvaleriofantozzi/opencode-copilot-multi.git"
   },
   "license": "MIT",
   "author": "Valerio Fantozzi",
