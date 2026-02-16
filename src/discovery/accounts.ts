@@ -7,20 +7,21 @@ import { logger } from '../utils/logger.js';
 import { getGitHubCopilotAuth, generateAccountId } from '../storage/auth.js';
 import { getAccountPool, addAccountToPool, saveAccountPool } from '../storage/pool.js';
 import { fetchGitHubUsername } from './username.js';
-import { DEFAULT_COPILOT_MODELS } from './models.js';
+import { getCopilotModels } from './models.js';
 import { writeModelsToConfig } from '../config/writer.js';
 import type { Account, OAuthData } from '../types.js';
 
 /**
  * Create a new account object
  */
-function createAccount(username: string, auth: OAuthData): Account {
+async function createAccount(username: string, auth: OAuthData): Promise<Account> {
+  const models = await getCopilotModels();
   return {
     id: generateAccountId(auth.refresh),
     username,
     displayName: username, // Can be customized later
     auth,
-    models: [...DEFAULT_COPILOT_MODELS],
+    models,
     addedAt: Date.now(),
   };
 }
@@ -66,7 +67,7 @@ export async function detectAndAddNewAccount(): Promise<Account | null> {
     const username = await fetchGitHubUsername(currentAuth.access);
     
     // Create and add account
-    const newAccount = createAccount(username, currentAuth);
+    const newAccount = await createAccount(username, currentAuth);
     await addAccountToPool(newAccount);
     
     // Update config with new models

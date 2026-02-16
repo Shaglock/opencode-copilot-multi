@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 import { logger } from '../utils/logger.js';
-import { buildModelConfig } from '../discovery/models.js';
+import { buildModelConfig, ensureCopilotModelsLoaded } from '../discovery/models.js';
 import { parseJSONC } from '../utils/jsonc.js';
 import { PLUGIN_CONSTANTS } from '../types.js';
 import type { Account, OpencodeConfig } from '../types.js';
@@ -83,6 +83,7 @@ async function writeConfig(config: OpencodeConfig): Promise<void> {
  */
 export async function writeModelsToConfig(accounts: Account[]): Promise<void> {
   logger.info(`Writing models for ${accounts.length} accounts to config...`);
+  await ensureCopilotModelsLoaded();
   
   const config = await readConfig();
   
